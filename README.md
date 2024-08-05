@@ -1,15 +1,15 @@
 # Product Analytics: Customer Purchase Behavior Analysis Based on Dynamic Daily Duration Insights
 
 ## Overview
-The project aims to understand how much time it takes for users to make a purchase on a merchandise store's website, from their first arrival until their first purchase on the same day. The project focuses on analyzing the dynamic daily duration of purchase sessions to derive actionable insights into user behavior. 
+The project aims to understand how much time it takes for users to make a purchase on a merchandise store's website, from their first arrival until their first purchase on the same day. The project focuses on analyzing the dynamic daily purchase duration to derive actionable insights into user behavior. 
 
 ## Project Structure
 The dynamic daily duration analysis was conducted by following these steps:
 + Extract and Calculate:
   * Queried session data to get timestamps for first arrival and first purchase.
-  * Calculated purchase session durations in minutes for each session.
+  * Calculated purchase durations in minutes for each session.
 + Aggregate and Analyze:
-  * Aggregated data to compute daily median purchase session durations.
+  * Aggregated data to compute daily median purchase durations.
   * Conducted device-specific analysis to compare user behavior across desktop, mobile, and tablet.
 + Distribution and Visualization:
   * Analyzed distribution of session durations across different time ranges.
@@ -39,7 +39,7 @@ SELECT
         WHEN event_name='purchase' THEN TIMESTAMP_MICROS(event_timestamp)
     END
       ) AS purchase_time,
-    --For device split in purchase session duration analysis
+    --For device split in purchase duration analysis
     --category
   FROM
     data_analytics.raw_events AS events
@@ -60,7 +60,7 @@ SELECT
   -- Ensure that the 'purchase' event occurred after the 'session_start' event
     AND MIN(CASE WHEN event_name = 'purchase' THEN event_timestamp END ) > MIN(CASE WHEN event_name = 'session_start' THEN event_timestamp END)
 ```
-CTE that calculates daily metrics for purchase sessions, including the number of purchases, the average purchase duration, and the median purchase duration in minutes
+CTE that calculates daily metrics for purchase duration, including the number of purchases, the average purchase duration, and the median purchase duration in minutes
 ```sql
  SELECT
     session_date,
@@ -77,22 +77,22 @@ CTE that calculates daily metrics for purchase sessions, including the number of
 ## [Analysis and Insights](https://github.com/user-attachments/files/16495020/CUSTOMER.PURCHASE.BEHAVIOR.ANALYSIS.pdf)
 
 Following are the analyses performed and key insights gained:
-+ Daily Median Purchase Session Duration: Identified significant fluctuations with peaks around key shopping events.
++ Daily Median Purchase Duration: Identified significant fluctuations with peaks around key shopping events.
 + Purchase Volume vs. Session Duration: Found correlation between higher purchase volumes and longer session durations.
-+ Distribution of Session Durations: Discovered that most sessions are under 30 minutes, with some notable outliers.
++ Distribution of Purchase Durations: Discovered that most sessions are under 30 minutes, with some notable outliers.
 + Device-Specific Analysis: Noted differences in user behavior across desktop, mobile, and tablet.
 
 ## Visualizations
-![Daily median purchase session duration over time](https://github.com/user-attachments/assets/bf736f63-9549-4586-af13-d89e2c6607fd)
+![Daily median purchase duration over time](https://github.com/user-attachments/assets/07537723-1444-400e-87da-13ccb550d78d)
 
-![Daily Purchase Volume vs. Average Session Duration](https://github.com/user-attachments/assets/85255354-aac2-41f3-822c-6a0a6e491503)
+![Daily Purchase Volume vs. Average Session Duration](https://github.com/user-attachments/assets/e97d868e-73f6-4ccd-b0e1-a85f1fa7bade)
 
-![Daily purchase session duration dynamic by device category](https://github.com/user-attachments/assets/901ae2ea-b6fb-45bf-8aa1-5ccb7a9ae643)
+![Daily purchase duration dynamic by device category](https://github.com/user-attachments/assets/c196fb2f-fb88-4011-a555-29eb6fcbc493)
 
-![Distribution of Purchase Session Durations by Category](https://github.com/user-attachments/assets/975344c9-1b91-40b3-a92d-5a00b03ab30b)
+![Distribution of Purchase Durations by Category](https://github.com/user-attachments/assets/fd94392a-f99c-4c7a-8b53-2bd4afd7d257)
 
 
 ## Limitations and Drawbacks
-+ Analysis focused solely on session duration.
++ Analysis focused solely on purchase duration.
 + Exclusion of sessions that began around midnight and continued with purchase early next day.
 
