@@ -74,7 +74,8 @@ CTE that calculates daily metrics for purchase sessions, including the number of
   GROUP BY
     session_date
 ```
-## [Analysis and Insights](https://github.com/user-attachments/files/16475679/CUSTOMER.PURCHASE.BEHAVIOR.ANALYSIS.pdf)
+## [Analysis and Insights](https://github.com/user-attachments/files/16495020/CUSTOMER.PURCHASE.BEHAVIOR.ANALYSIS.pdf)
+
 Following are the analyses performed and key insights gained:
 + Daily Median Purchase Session Duration: Identified significant fluctuations with peaks around key shopping events.
 + Purchase Volume vs. Session Duration: Found correlation between higher purchase volumes and longer session durations.
