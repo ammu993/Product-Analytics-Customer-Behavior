@@ -26,6 +26,8 @@ A single table <kbd> data_analytics.raw_events </kbd> containing information abo
 
 
 ## Data Processing
+Full Code in file : ![ProductAnalytics.sql](https://github.com/ammu993/Product-Analytics-Customer-Behavior/blob/1bf90dc2c2624734603cdb209126acb9d6d1746f/ProductAnalytics.sql)
+
 SQL code snippet  identifies the start of each session and the corresponding purchase event, ensuring both events occur on the same day and the purchase happens after the session start. The query also allows for device-specific analysis by including a device category
 ```sql
 SELECT
